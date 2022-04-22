@@ -8,3 +8,9 @@
 4. Ioan Sava (MISS)
 
 ## [Documentation](https://www.overleaf.com/read/kpmdgxksmdwx)
+
+## How to run tests
+
+```
+npm run test
+```
