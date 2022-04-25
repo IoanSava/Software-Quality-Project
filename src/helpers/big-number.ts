@@ -27,18 +27,18 @@ export function checkIfBigNumberEqualsToZero(bigNumber: number[]): boolean {
  *         1, if the first number is greater than the second number
  *
  * Examples: compare([2, 1, 2], [2, 1, 2]) => 0
- *           compare([2, 1, 2], [2, 0, 2]) => -1
+ *           compare([2, 0, 2], [2, 1, 2]) => -1
  *           compare([2, 1, 2], [2, 0, 1]) => 1
  *
  * @param firstBigNumber - the first big number
  * @param secondBigNumber - the second big number
  */
 export function compare(firstBigNumber: number[], secondBigNumber: number[]): number {
-    while (firstBigNumber[0] > 1 && firstBigNumber[firstBigNumber[0]]) {
+    while (firstBigNumber[0] > 1 && firstBigNumber[firstBigNumber[0]] === 0) {
         --firstBigNumber[0];
     }
 
-    while (secondBigNumber[0] > 1 && secondBigNumber[secondBigNumber[0]]) {
+    while (secondBigNumber[0] > 1 && secondBigNumber[secondBigNumber[0]] === 0) {
         --secondBigNumber[0];
     }
 
