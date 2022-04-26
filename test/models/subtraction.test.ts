@@ -1,5 +1,5 @@
-import {Subtraction} from "../../src/models/subtraction";
-import {NegativeResultOfSubtractionError} from "../../src/errors/negative-result-of-subtraction-error";
+import { Subtraction } from "../../src/models/subtraction";
+import { NegativeResultOfSubtractionError } from "../../src/errors/negative-result-of-subtraction-error";
 
 describe("Subtraction.apply", () => {
     test("Negative difference should throw error", () => {

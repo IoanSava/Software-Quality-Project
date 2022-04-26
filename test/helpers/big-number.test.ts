@@ -1,4 +1,4 @@
-import {checkIfBigNumberEqualsToZero, compare} from "../../src/helpers/big-number";
+import { checkIfBigNumberEqualsToZero, compare } from "../../src/helpers/big-number";
 
 describe("compare", () => {
     test("compare 2 equal numbers", () => {

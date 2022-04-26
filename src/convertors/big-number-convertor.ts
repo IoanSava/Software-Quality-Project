@@ -1,5 +1,5 @@
-import {doesStringContainOnlyDigits, isFalsy} from "../helpers/utils";
-import {InvalidBigNumberError} from "../errors/invalid-big-number-error";
+import { doesStringContainOnlyDigits, isFalsy } from "../helpers/utils";
+import { InvalidBigNumberError } from "../errors/invalid-big-number-error";
 
 export class BigNumberConvertor {
     /**

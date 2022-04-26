@@ -1,8 +1,8 @@
-import {BinaryOperator} from "./binary-operator";
-import {checkIfBigNumberEqualsToZero, compare} from "../helpers/big-number";
-import {ZeroToThePowerOfZeroError} from "../errors/zero-to-the-power-of-zero-error";
-import {Multiplication} from "./multiplication";
-import {Addition} from "./addition";
+import { BinaryOperator } from "./binary-operator";
+import { checkIfBigNumberEqualsToZero, compare } from "../helpers/big-number";
+import { ZeroToThePowerOfZeroError } from "../errors/zero-to-the-power-of-zero-error";
+import { Multiplication } from "./multiplication";
+import { Addition } from "./addition";
 
 export class Power extends BinaryOperator {
     getSymbol(): string {

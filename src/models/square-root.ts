@@ -1,4 +1,4 @@
-import {UnaryOperator} from "./unary-operator";
+import { UnaryOperator } from "./unary-operator";
 import { Addition } from "./addition";
 import { Subtraction } from "./subtraction";
 import { Multiplication } from "./multiplication";
