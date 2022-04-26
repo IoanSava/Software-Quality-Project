@@ -14,3 +14,11 @@
 ```
 npm run test
 ```
+
+
+## How to start the UI
+
+```
+cd ui
+npm start
+```
