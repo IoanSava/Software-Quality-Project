@@ -1,0 +1,15 @@
+{
+  "operation": "ADDITION",
+  "left": {
+    "operation": "MULTIPLICATION",
+    "left": {
+      "constant": "1"
+    },
+    "right": {
+      "constant": "2"
+    }
+  },
+  "right": {
+    "constant": "3"
+  }
+}
