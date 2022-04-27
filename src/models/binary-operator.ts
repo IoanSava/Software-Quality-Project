@@ -1,5 +1,4 @@
 import {Operator} from "./operator";
-import {convertBigNumberToString} from "../helpers/big-number";
 
 export abstract class BinaryOperator extends Operator {
     apply(firstBigNumber: number[], secondBigNumber: number[]): number[] {
@@ -11,9 +10,9 @@ export abstract class BinaryOperator extends Operator {
     protected abstract compute(firstBigNumber: number[], secondBigNumber: number[]): number[];
 
     protected printOperation(firstBigNumber: number[], secondBigNumber: number[], result: number[]): void {
-        const firstBigNumberAsString: string = convertBigNumberToString(firstBigNumber);
-        const secondBigNumberAsString: string = convertBigNumberToString(secondBigNumber);
-        const resultAsString: string = convertBigNumberToString(result);
+        const firstBigNumberAsString: string = this.bigNumberConvertor.convertBigNumberToString(firstBigNumber);
+        const secondBigNumberAsString: string = this.bigNumberConvertor.convertBigNumberToString(secondBigNumber);
+        const resultAsString: string = this.bigNumberConvertor.convertBigNumberToString(result);
         console.log(`${firstBigNumberAsString} ${this.getSymbol()} ${secondBigNumberAsString} = ${resultAsString}`);
     }
 }

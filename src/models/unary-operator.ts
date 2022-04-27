@@ -1,5 +1,4 @@
 import {Operator} from "./operator";
-import {convertBigNumberToString} from "../helpers/big-number";
 
 export abstract class UnaryOperator extends Operator {
     apply(bigNumber: number[]): number[] {
@@ -11,8 +10,8 @@ export abstract class UnaryOperator extends Operator {
     protected abstract compute(bigNumber: number[]): number[];
 
     private printOperation(bigNumber: number[], result: number[]): void {
-        const bigNumberAsString: string = convertBigNumberToString(bigNumber);
-        const resultAsString: string = convertBigNumberToString(result);
+        const bigNumberAsString: string = this.bigNumberConvertor.convertBigNumberToString(bigNumber);
+        const resultAsString: string = this.bigNumberConvertor.convertBigNumberToString(result);
         console.log(`${this.getSymbol()}(${bigNumberAsString}) = ${resultAsString}`);
     }
 }
