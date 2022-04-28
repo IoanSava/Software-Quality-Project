@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es6",
+    "target": "es2021",
     "types": [
       "node",
       "jest"
@@ -24,6 +24,7 @@
   "exclude": [
     "node_modules",
     "dist",
-    "test"
+    "test",
+    "coverage"
   ]
 }

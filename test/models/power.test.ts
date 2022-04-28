@@ -1,5 +1,5 @@
-import {Power} from "../../src/models/power";
-import {ZeroToThePowerOfZeroError} from "../../src/errors/zero-to-the-power-of-zero-error";
+import { Power } from "../../src/models/power";
+import { ZeroToThePowerOfZeroError } from "../../src/errors/zero-to-the-power-of-zero-error";
 
 describe("Power.apply", () => {
     test("0^0 should throw error", () => {

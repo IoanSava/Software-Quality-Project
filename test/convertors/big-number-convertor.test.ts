@@ -1,5 +1,5 @@
-import {BigNumberConvertor} from "../../src/convertors/big-number-convertor";
-import {InvalidBigNumberError} from "../../src/errors/invalid-big-number-error";
+import { BigNumberConvertor } from "../../src/convertors/big-number-convertor";
+import { InvalidBigNumberError } from "../../src/errors/invalid-big-number-error";
 
 describe("BigNumberConvertor", () => {
     const bigNumberConvertor: BigNumberConvertor = new BigNumberConvertor();

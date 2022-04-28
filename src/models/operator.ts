@@ -1,4 +1,4 @@
-import {BigNumberConvertor} from "../convertors/big-number-convertor";
+import { BigNumberConvertor } from "../convertors/big-number-convertor";
 
 export abstract class Operator {
     protected bigNumberConvertor: BigNumberConvertor;

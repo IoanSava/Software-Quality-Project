@@ -1,4 +1,4 @@
-import {Addition} from "../../src/models/addition";
+import { Addition } from "../../src/models/addition";
 
 describe("Addition.apply", () => {
     test("321 + 0 = 321", () => {

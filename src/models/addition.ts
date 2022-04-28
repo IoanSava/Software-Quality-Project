@@ -1,4 +1,4 @@
-import {BinaryOperator} from "./binary-operator";
+import { BinaryOperator } from "./binary-operator";
 
 export class Addition extends BinaryOperator {
     getSymbol(): string {
