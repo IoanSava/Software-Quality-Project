@@ -15,7 +15,6 @@
 npm run test
 ```
 
-
 ## How to start the UI
 
 ```

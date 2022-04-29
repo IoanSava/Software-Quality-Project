@@ -9,9 +9,9 @@ export class Subtraction extends BinaryOperator {
 
     /**
      * Subtracts two big numbers.
-     * 
+     *
      * Example: compute([3, 2, 4, 3], [3, 9, 7, 1]) => [3, 3, 6, 1]
-     * 
+     *
      * @param firstBigNumber - the minuend
      * @param secondBigNumber - the subtrahend
      * @returns the difference left when subtracting the subtrahend from the minuend.

@@ -29,8 +29,7 @@ export class Multiplication extends BinaryOperator {
                 intermediateProduct = firstBigNumber[i] * secondBigNumber[j];
                 if (result[i + j - 1]) {
                     result[i + j - 1] += intermediateProduct;
-                }
-                else {
+                } else {
                     result[i + j - 1] = intermediateProduct;
                 }
             }
