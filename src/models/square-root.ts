@@ -11,9 +11,9 @@ export class SquareRoot extends UnaryOperator {
 
     /**
      * Computes the square root of a number (if the number is not a perfect square, the result is truncated)
-     * 
+     *
      * Example: compute([3, 1, 2, 1]) => [2, 1, 1]
-     * 
+     *
      * @param bigNumber - the radicand (the number whose square root is being considered)
      * @returns the square root of the given number
      */
