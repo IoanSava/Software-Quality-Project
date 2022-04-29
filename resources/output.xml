@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<output>
+	<result>
+		<step>10 + 20 = 30</step>
+		<step>30 * 10 = 300</step>
+		<step>300 - 10 = 290</step>
+	</result>
+</output>

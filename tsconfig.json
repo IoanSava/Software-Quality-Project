@@ -15,6 +15,7 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
+    "strictNullChecks": false,
     "baseUrl": ".",
     "noFallthroughCasesInSwitch": true,
     "rootDir": ".",
