@@ -34,4 +34,22 @@ describe("ArithmeticExpressionEvaluator.evaluate", () => {
             "1 + 3 = 4"
         ])
     });
+
+    test("1 / 0 * 1 = error", () => {
+        const expression: string = "1 / 0 * 1";
+        const variables: Map<string, string> = new Map<string, string>();
+        const expectedMessage: string = "Division by zero encountered in: 1 / 0";
+        expect(evaluator.evaluate(expression, variables)).toEqual([
+            "0 * 1 = 0",
+            "1 / 0 = error",
+            expectedMessage
+        ])
+    });
+
+    test("123 123 = parsing error", () => {
+        const expression: string = "123 123";
+        const variables: Map<string, string> = new Map<string, string>();
+        const expected: string[] = ["parsing error"];
+        expect(evaluator.evaluate(expression, variables)).toEqual(expected);
+    });
 });
