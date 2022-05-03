@@ -10,6 +10,8 @@ import { Power } from "../models/power";
 import { SquareRoot } from "../models/square-root";
 import { ExpressionConvertor } from "../convertors/expression-convertor";
 
+const PARSING_ERROR_MESSAGE = "parsing error";
+
 export class ArithmeticExpressionEvaluator {
     public constructor(
         private bigNumberConvertor: BigNumberConvertor,
@@ -33,16 +35,28 @@ export class ArithmeticExpressionEvaluator {
         console.log(`Arithmetic expression: ${arithmeticExpression}`);
         console.log(`Variables: ${JSON.stringify(Object.fromEntries([...variables]))}`);
 
-        let root = this.expressionConvertor.stringToNode(arithmeticExpression);
+        let root = null;
+        try {
+            root = this.expressionConvertor.stringToNode(arithmeticExpression);
+        } catch (ignored) {
+            return [PARSING_ERROR_MESSAGE];
+        }
+
         let parents = calculateParentMap(root);
         let res: string[] = [];
 
         for (let node of postorder(root)) {
-            let newNode = this.evalOne(node, variables);
-            let expressionString = this.expressionConvertor.atomicNodeToString(node) + " = " +
-                this.expressionConvertor.nodeToString(newNode);
-            root = this.mutate(root, node, newNode, parents);
-            res.push(expressionString);
+            try {
+                let newNode = this.evalOne(node, variables);
+                let expressionString = this.expressionConvertor.atomicNodeToString(node) + " = " +
+                    this.expressionConvertor.nodeToString(newNode);
+                root = this.mutate(root, node, newNode, parents);
+                res.push(expressionString);
+            } catch (err) {
+                let expressionString = this.expressionConvertor.atomicNodeToString(node) + " = error";
+                res.push(expressionString, (err as Error).message);
+                return res;
+            }
         }
 
         return res;
