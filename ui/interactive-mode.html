@@ -13,22 +13,19 @@
     <h1>Interactive mode</h1>
 
     <div class="wrapper">
-        <form class="interactive-form">
+        <form id="interactive-form">
             <label for="expression">Arithmetic Expression</label>
             <input type="text" id="expression" name="expression" placeholder="(a + b) * c" required>
 
             <label for="values">Values</label>
-            <input type="text" id="values" name="values" placeholder="a=123,b=456,c=765" required>
+            <input type="text" id="values" name="values" placeholder="a=123,b=456,c=765">
 
-            <button id="interactive-button" type="button" value="Submit" name="submit"
-                class="submit-button">Submit</button>
-            <div id="result">
-                <pre class="result"></pre>
-            </div>
+            <input type="submit" value="Submit" name="submit"/>
         </form>
+        <pre id="result"></pre>
     </div>
 
-    <script>var exports = {};</script>
+    <script>let exports = {};</script>
     <script src="interactive-mode.js"></script>
 </body>
 

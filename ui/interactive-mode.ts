@@ -23,12 +23,14 @@ function addOperation(event: any): void {
         new BigNumberConvertor(), new ExpressionConvertor()
     );
     let result: string[] = arithmeticExpressionEvaluator.evaluate(expression, mapOfValues);
-    let resultSection: any = document.querySelector('#result pre');
+    let resultSection: any = document.querySelector('#result');
     resultSection.textContent = result.join("\n");
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    (<HTMLInputElement>document.getElementById('interactive-button')).addEventListener('click', addOperation);
+document.addEventListener("DOMContentLoaded", () => {
+    (<HTMLFormElement>(
+        document.getElementById("interactive-form")
+    )).addEventListener("submit", addOperation);
 });
 
 export {};

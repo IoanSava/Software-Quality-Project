@@ -13,10 +13,18 @@ describe("BigNumberConvertor", () => {
             expect(bigNumberConvertor.convertBigNumberToString(zeroNumber)).toBe(result);
         });
 
-        test("convert 123 to string", () => {
-            const bigNumber: number[] = [3, 3, 2, 1];
+        test("convert 1 to string", () => {
+            const bigNumber: number[] = [1, 1];
 
-            const result = "123";
+            const result = "1";
+
+            expect(bigNumberConvertor.convertBigNumberToString(bigNumber)).toBe(result);
+        });
+
+        test("convert 123456789 to string", () => {
+            const bigNumber: number[] = [9, 9, 8, 7, 6, 5, 4, 3, 2, 1];
+
+            const result = "123456789";
 
             expect(bigNumberConvertor.convertBigNumberToString(bigNumber)).toBe(result);
         });
@@ -38,6 +46,22 @@ describe("BigNumberConvertor", () => {
             expect(bigNumberConvertor.convertStringToBigNumber(emptyString)).toEqual(result);
         });
 
+        test(`convert "0" to big number`, () => {
+            const testString: string = "0";
+
+            const result: number[] = [1, 0];
+
+            expect(bigNumberConvertor.convertStringToBigNumber(testString)).toEqual(result);
+        });
+
+        test(`convert "1" to big number`, () => {
+            const testString: string = "1";
+
+            const result: number[] = [1, 1];
+
+            expect(bigNumberConvertor.convertStringToBigNumber(testString)).toEqual(result);
+        });
+
         test(`convert "10" to big number`, () => {
             const testString: string = "10";
 
@@ -46,10 +70,18 @@ describe("BigNumberConvertor", () => {
             expect(bigNumberConvertor.convertStringToBigNumber(testString)).toEqual(result);
         });
 
-        test(`convert "12345" to big number`, () => {
-            const testString: string = "12345";
+        test(`convert "123456789" to big number`, () => {
+            const testString: string = "123456789";
 
-            const result: number[] = [5, 5, 4, 3, 2, 1];
+            const result: number[] = [9, 9, 8, 7, 6, 5, 4, 3, 2, 1];
+
+            expect(bigNumberConvertor.convertStringToBigNumber(testString)).toEqual(result);
+        });
+
+        test(`convert " 123456789  " to big number`, () => {
+            const testString: string = " 123456789  ";
+
+            const result: number[] = [9, 9, 8, 7, 6, 5, 4, 3, 2, 1];
 
             expect(bigNumberConvertor.convertStringToBigNumber(testString)).toEqual(result);
         });

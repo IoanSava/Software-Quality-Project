@@ -1,8 +1,8 @@
 import { parse } from "../../src/helpers/parser";
-import example1 from "./data/example1.json";
-import example2 from "./data/example2.json";
-import example3 from "./data/example3.json";
-import example4 from "./data/example4.json";
+import example1 from "./data/parser/example1.json";
+import example2 from "./data/parser/example2.json";
+import example3 from "./data/parser/example3.json";
+import example4 from "./data/parser/example4.json";
 
 describe("parser", () => {
     test("1 + 2", () => {

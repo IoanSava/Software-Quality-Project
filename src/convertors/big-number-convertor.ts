@@ -21,12 +21,14 @@ export class BigNumberConvertor {
      * @param str - the string to be converted to big number
      */
     convertStringToBigNumber(str: string): number[] {
-        if (!doesStringContainOnlyDigits(str)) {
-            throw new InvalidBigNumberError(str);
-        }
-
         if (isFalsy(str)) {
             return [1, 0];
+        }
+
+        str = str.trim();
+
+        if (!doesStringContainOnlyDigits(str)) {
+            throw new InvalidBigNumberError(str);
         }
 
         let result: number[] = [str.length];
