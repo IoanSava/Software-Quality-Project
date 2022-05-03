@@ -1,0 +1,9 @@
+{
+  "operation": "ADDITION",
+  "left": {
+    "constant": "1"
+  },
+  "right": {
+    "constant": "2"
+  }
+}
