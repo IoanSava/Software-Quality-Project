@@ -77,7 +77,7 @@ export class ExpressionConvertor {
      * @return content - the arithmetic expression string.
      */
     public atomicNodeToString(root: ExpressionTreeNode): string {
-        if (root.operation === "SQRT") return `sqrt(${root.left})`;
+        if (root.operation === "SQRT") return `sqrt(${root.left.constant || root.left.variable})`;
         return [
             root.left.constant || root.left.variable,
             operationSymbol(root.operation),
