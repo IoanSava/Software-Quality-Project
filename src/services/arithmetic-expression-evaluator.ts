@@ -13,14 +13,14 @@ import { ExpressionConvertor } from "../convertors/expression-convertor";
 const PARSING_ERROR_MESSAGE = "parsing error";
 
 export class ArithmeticExpressionEvaluator {
-    public constructor(
+    constructor(
         private bigNumberConvertor: BigNumberConvertor,
         private expressionConvertor: ExpressionConvertor
     ) {
     }
 
     /**
-     * Converts a arithmetic expression string to a syntax tree representation.
+     * Converts an arithmetic expression string to a syntax tree representation.
      *
      * Example: evaluate("1 + x * 2", {"x": 1}) => [
      *      "1 + 2",
@@ -32,9 +32,6 @@ export class ArithmeticExpressionEvaluator {
      * @return operations - array of strings representing the results of the atomic operations
      */
     evaluate(arithmeticExpression: string, variables: Map<string, string>): string[] {
-        console.log(`Arithmetic expression: ${arithmeticExpression}`);
-        console.log(`Variables: ${JSON.stringify(Object.fromEntries([...variables]))}`);
-
         let root = null;
         try {
             root = this.expressionConvertor.stringToNode(arithmeticExpression);
@@ -43,27 +40,27 @@ export class ArithmeticExpressionEvaluator {
         }
 
         let parents = calculateParentMap(root);
-        let res: string[] = [];
+        let result: string[] = [];
 
         for (let node of postorder(root)) {
             try {
                 let newNode = this.evalOne(node, variables);
                 let expressionString = this.expressionConvertor.atomicNodeToString(node) + " = " +
                     this.expressionConvertor.nodeToString(newNode);
-                root = this.mutate(root, node, newNode, parents);
-                res.push(expressionString);
+                root = ArithmeticExpressionEvaluator.mutate(root, node, newNode, parents);
+                result.push(expressionString);
             } catch (err) {
                 let expressionString = this.expressionConvertor.atomicNodeToString(node) + " = error";
-                res.push(expressionString, (err as Error).message);
-                return res;
+                result.push(expressionString, (err as Error).message);
+                return result;
             }
         }
 
-        return res;
+        return result;
     }
 
     private evalOne(node: ExpressionTreeNode, variables: Map<string, string>): ExpressionTreeNode {
-        this.ensureExpression(node);
+        ArithmeticExpressionEvaluator.ensureExpression(node);
         const params: number[][] = this.extractParams(node, variables);
         let result: number[];
 
@@ -105,7 +102,7 @@ export class ArithmeticExpressionEvaluator {
         return params;
     }
 
-    private mutate(
+    private static mutate(
         root: ExpressionTreeNode,
         oldNode: ExpressionTreeNode,
         newNode: ExpressionTreeNode,
@@ -118,7 +115,7 @@ export class ArithmeticExpressionEvaluator {
         return root;
     }
 
-    private ensureExpression(node: ExpressionTreeNode): void {
+    private static ensureExpression(node: ExpressionTreeNode): void {
         if (!isExpression(node))
             throw new IllegalStateError();
     }

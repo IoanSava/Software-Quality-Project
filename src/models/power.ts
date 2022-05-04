@@ -6,7 +6,7 @@ import { Addition } from "./addition";
 
 export class Power extends BinaryOperator {
     getSymbol(): string {
-        return "^";
+        return "**";
     }
 
     /**

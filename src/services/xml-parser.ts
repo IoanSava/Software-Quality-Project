@@ -1,8 +1,5 @@
 export class XMLParser {
-  private parser: DOMParser;
-
-  constructor() {
-    this.parser = new DOMParser();
+  constructor(private parser: DOMParser) {
   }
 
   extractExpression(text: string): string {

@@ -12,15 +12,15 @@
     <h1>Automatic mode</h1>
 
     <div class="wrapper">
-        <form class="automatic-form">
+        <form id="automatic-form">
             <label for="expression-file">Select a file:</label>
-            <input type="file" accept="text/xml" id="expression-file" name="expression-file"><br><br>
-            <button id="automatic-button" type="button" value="Submit" name="submit" class="submit-button">Submit</button>
+            <input type="file" accept="text/xml" id="expression-file" name="expression-file" required><br><br>
+            <input type="submit" value="Submit" name="submit" />
         </form>
     </div>
 
     <script>
-        var exports = {};
+        let exports = {};
     </script>
     <script src="automatic-mode.js"></script>
 </body>

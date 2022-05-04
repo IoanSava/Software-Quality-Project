@@ -30,7 +30,8 @@ function downloadResult(event: any): void {
             if (typeof xmlContent === "object") {
                 xmlContent = new TextDecoder().decode(xmlContent);
             }
-            const xmlParser: XMLParser = new XMLParser();
+
+            const xmlParser: XMLParser = new XMLParser(new DOMParser());
             const expression: string = xmlParser.extractExpression(xmlContent);
             const variables: Map<string, string> =
                 xmlParser.extractVariables(xmlContent);
@@ -43,6 +44,7 @@ function downloadResult(event: any): void {
                 expression,
                 variables
             );
+
             const xmlCreator: XMLCreator = new XMLCreator();
             const xmlFileContent: string = xmlCreator.createResultXML(result);
             triggerDownloadWindow(xmlFileContent);
@@ -51,9 +53,9 @@ function downloadResult(event: any): void {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    (<HTMLInputElement>(
-        document.getElementById("automatic-button")
-    )).addEventListener("click", downloadResult);
+    (<HTMLFormElement>(
+        document.getElementById("automatic-form")
+    )).addEventListener("submit", downloadResult);
 });
 
 export {};
