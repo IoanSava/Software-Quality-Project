@@ -2,8 +2,8 @@ start
   = additive
 
 additive
-  = left:multiplicative _ "+" _ right:additive { return {left, right, operation: "ADDITION"}; }
-  / left: multiplicative _ "-" _ right:additive { return {left, right, operation: "SUBTRACTION"}; }
+  = _ left:multiplicative _ "+" _ right:additive _ { return {left, right, operation: "ADDITION"}; }
+  / _ left: multiplicative _ "-" _ right:additive _ { return {left, right, operation: "SUBTRACTION"}; }
   / multiplicative
 
 multiplicative
@@ -17,7 +17,7 @@ pow
 
 unary
   = "sqrt(" _ left:additive _ ")" { return {left, operation: "SQRT"}; }
-  / primary 
+  / primary
 
 primary
   = constant

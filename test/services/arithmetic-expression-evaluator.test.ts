@@ -13,7 +13,7 @@ describe("ArithmeticExpressionEvaluator.evaluate", () => {
         const variables: Map<string, string> = new Map<string, string>();
         expect(evaluator.evaluate(expression, variables)).toEqual([
             "1 + 1 = 2"
-        ])
+        ]);
     });
 
     test("1 + 1 + 1 = 3", () => {
@@ -25,14 +25,37 @@ describe("ArithmeticExpressionEvaluator.evaluate", () => {
         ])
     });
 
-    test("1 + 1 + 1 * 2 = 3", () => {
-        const expression: string = "1 + 1 + 1 * 2";
+    test("sqrt(2 + x) = 2", () => {
+        const expression: string = "sqrt(2 + 2)";
+        const variables: Map<string, string> = new Map<string, string>([["x", "2"]]);
+        expect(evaluator.evaluate(expression, variables)).toEqual([
+            "2 + 2 = 4",
+            "sqrt(4) = 2"
+        ])
+    });
+
+    test("5 + 5 * 3 - 10 = 10", () => {
+        const expression: string = "5 + 5 * 3 - 10";
         const variables: Map<string, string> = new Map<string, string>();
         expect(evaluator.evaluate(expression, variables)).toEqual([
-            "1 * 2 = 2",
+            "5 * 3 = 15",
+            "15 - 10 = 5",
+            "5 + 5 = 10"
+        ]);
+    });
+
+    test("(1 + 1 + 1) * 2 ** 5 / 2 - sqrt(4)", () => {
+        const expression: string = "(1 + 1 + 1) * 2 ** 5 / 2 - sqrt(4)";
+        const variables: Map<string, string> = new Map<string, string>();
+        expect(evaluator.evaluate(expression, variables)).toEqual([
+            "1 + 1 = 2",
             "1 + 2 = 3",
-            "1 + 3 = 4"
-        ])
+            "2 ** 5 = 32",
+            "32 / 2 = 16",
+            "3 * 16 = 48",
+            "sqrt(4) = 2",
+            "48 - 2 = 46"
+        ]);
     });
 
     test("1 / 0 * 1 = error", () => {
@@ -51,5 +74,23 @@ describe("ArithmeticExpressionEvaluator.evaluate", () => {
         const variables: Map<string, string> = new Map<string, string>();
         const expected: string[] = ["parsing error"];
         expect(evaluator.evaluate(expression, variables)).toEqual(expected);
+    });
+
+    test("whitespaces", () => {
+        const expression: string = " ( 1)+    \t\n2 /sqrt(\t\t\t\t4)";
+        const variables: Map<string, string> = new Map<string, string>();
+        expect(evaluator.evaluate(expression, variables)).toEqual([
+            "sqrt(4) = 2",
+            "2 / 2 = 1",
+            "1 + 1 = 2"
+        ]);
+    });
+
+    test("empty string", () => {
+        const expression: string = "";
+        const variables: Map<string, string> = new Map<string, string>();
+        expect(evaluator.evaluate(expression, variables)).toEqual([
+            "parsing error"
+        ]);
     });
 });
