@@ -69,7 +69,7 @@ export function* inorder(root: ExpressionTreeNode): Generator<ExpressionTreeNode
             currentNode = currentNode.left;
         } else {
             currentNode = stack.pop();
-            yield currentNode;
+            if (isExpression(currentNode)) yield currentNode;
             currentNode = currentNode.right;
         }
     }
