@@ -1,17 +1,7 @@
 import { ArithmeticExpressionEvaluator } from "../src/services/arithmetic-expression-evaluator";
 import { BigNumberConvertor } from "../src/convertors/big-number-convertor";
 import { ExpressionConvertor } from "../src/convertors/expression-convertor";
-
-function transformValuesToMap(values: string): Map<string, string> {
-    let mapOfValues: Map<string, string> = new Map<string, string>();
-    let params: string[] = values.split(",");
-    for (let i = 0; i < params.length; ++i) {
-        let parts: string[] = params[i].split('=');
-        mapOfValues.set(parts[0], parts[1]);
-    }
-
-    return mapOfValues;
-}
+import { transformValuesToMap } from "../src/helpers/utils";
 
 function addOperation(event: any): void {
     event.preventDefault();

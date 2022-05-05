@@ -1,6 +1,40 @@
 import { Multiplication } from "../../src/models/multiplication";
 
 describe("Multiplication.apply", () => {
+    test("0 * 0 = 0", () => {
+        const zeroNumber: number[] = [1, 0];
+
+        expect(new Multiplication().apply(zeroNumber, zeroNumber)).toEqual(zeroNumber);
+    });
+
+    test("1 * 0 = 0", () => {
+        const bigNumber: number[] = [1, 1];
+        const zeroNumber: number[] = [1, 0];
+
+        expect(new Multiplication().apply(bigNumber, zeroNumber)).toEqual(zeroNumber);
+    });
+
+    test("123456789 * 0 = 0", () => {
+        const bigNumber: number[] = [9, 9, 8, 7, 6, 5, 4, 3, 2, 1];
+        const zeroNumber: number[] = [1, 0];
+
+        expect(new Multiplication().apply(bigNumber, zeroNumber)).toEqual(zeroNumber);
+    });
+
+    test("0 * 1 = 0", () => {
+        const bigNumber: number[] = [1, 1];
+        const zeroNumber: number[] = [1, 0];
+
+        expect(new Multiplication().apply(zeroNumber, bigNumber)).toEqual(zeroNumber);
+    });
+
+    test("0 * 123456789 = 0", () => {
+        const bigNumber: number[] = [9, 9, 8, 7, 6, 5, 4, 3, 2, 1];
+        const zeroNumber: number[] = [1, 0];
+
+        expect(new Multiplication().apply(zeroNumber, bigNumber)).toEqual(zeroNumber);
+    });
+
     test("19 * 0 = 0", () => {
         const bigNumber: number[] = [2, 9, 1];
         const zeroNumber: number[] = [1, 0];
