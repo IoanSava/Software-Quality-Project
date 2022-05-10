@@ -31,7 +31,7 @@ describe("ArithmeticExpressionEvaluator.evaluate", () => {
         expect(evaluator.evaluate(expression, variables)).toEqual([
             "2 + 2 = 4",
             "sqrt(4) = 2"
-        ])
+        ]);
     });
 
     test("5 + 5 * 3 - 10 = 10", () => {
