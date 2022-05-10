@@ -55,13 +55,9 @@ export class ExpressionConvertor {
      */
     public nodeToString(root: ExpressionTreeNode): string {
         let traversal: string[] = [];
-        for (let node of inorder(root)) {
-            if (isExpression(node))
-                traversal.push(operationSymbol(node.operation));
-            else
-                traversal.push(node.constant || node.variable);
-        }
-        return traversal.join(" ");
+        for (let node of inorder(root))
+            traversal.push(this.atomicNodeToString(node));
+        return traversal.join("");
     }
 
     /**
@@ -78,6 +74,7 @@ export class ExpressionConvertor {
      */
     public atomicNodeToString(root: ExpressionTreeNode): string {
         if (root.operation === "SQRT") return `sqrt(${root.left.constant || root.left.variable})`;
+        if (!isExpression(root)) return (root.constant || root.variable).toString();
         return [
             root.left.constant || root.left.variable,
             operationSymbol(root.operation),

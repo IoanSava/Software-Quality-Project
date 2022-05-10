@@ -46,7 +46,7 @@ export class ArithmeticExpressionEvaluator {
             try {
                 let newNode = this.evalOne(node, variables);
                 let expressionString = this.expressionConvertor.atomicNodeToString(node) + " = " +
-                    this.expressionConvertor.nodeToString(newNode);
+                    this.expressionConvertor.atomicNodeToString(newNode);
                 root = ArithmeticExpressionEvaluator.mutate(root, node, newNode, parents);
                 result.push(expressionString);
             } catch (err) {
