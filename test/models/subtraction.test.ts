@@ -9,8 +9,6 @@ describe("Subtraction.apply", () => {
         expect(() => new Subtraction().apply(minuend, subtrahend)).toThrow(new NegativeResultOfSubtractionError(minuend, subtrahend));
     });
 
-    // Test is obsolete here, but checks lines 27, 31 for big-number.ts
-    //
     test("Bigger sizes than the actual numbers, but subtraction is performed correctly", () => {
         const minuend: number[] = [5, 0, 2, 3, 0, 0];
         const subtrahend: number[] = [7, 5, 1, 3, 0, 0, 0, 0];

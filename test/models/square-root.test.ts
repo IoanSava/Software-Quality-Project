@@ -22,7 +22,7 @@ describe("SquareRoot.apply", () => {
         expect(new SquareRoot().apply(testNumber)).toEqual(result);
     });
 
-    test("sqrt(40) approximately equal to 6", () => {
+    test("sqrt(40) = 6", () => {
         const testNumber: number[] = [2, 0, 4];
         const result: number[] = [1, 6];
 
@@ -36,7 +36,7 @@ describe("SquareRoot.apply", () => {
         expect(new SquareRoot().apply(testNumber)).toEqual(result);
     });
 
-    test("sqrt(1234567) approximately equal to 1111", () => {
+    test("sqrt(1234567) = 1111", () => {
         const testNumber: number[] = [7, 7, 6, 5, 4, 3, 2, 1];
         const result: number[] = [4, 1, 1, 1, 1];
 
