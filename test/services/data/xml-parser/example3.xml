@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<input>
+	<expression>a + 20 * c - 100</expression>
+	<variables>
+		<variable>
+			<name>a</name>
+			<value>10</value>
+		</variable>
+		<variable>
+			<name>c</name>
+			<value>30</value>
+		</variable>
+	</variables>
+</input>

@@ -27,5 +27,19 @@ describe("SquareRoot.apply", () => {
         const result: number[] = [1, 6];
 
         expect(new SquareRoot().apply(testNumber)).toEqual(result);
-    })
+    });
+
+    test("sqrt(1048576) = 1024", () => {
+        const testNumber: number[] = [7, 6, 7, 5, 8, 4, 0, 1];
+        const result: number[] = [4, 4, 2, 0, 1];
+
+        expect(new SquareRoot().apply(testNumber)).toEqual(result);
+    });
+
+    test("sqrt(1234567) approximately equal to 1111", () => {
+        const testNumber: number[] = [7, 7, 6, 5, 4, 3, 2, 1];
+        const result: number[] = [4, 1, 1, 1, 1];
+
+        expect(new SquareRoot().apply(testNumber)).toEqual(result);
+    });
 });
