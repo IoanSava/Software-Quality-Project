@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<input>
+	<expression>(a + b) * (c - d)</expression>
+	<variables>
+		<variable>
+			<name>a</name>
+			<value>10</value>
+		</variable>
+		<variable>
+			<name>b</name>
+			<value>2</value>
+		</variable>
+		<variable>
+			<name>c</name>
+			<value>30</value>
+		</variable>
+        <variable>
+			<name>d</name>
+			<value>25</value>
+		</variable>
+	</variables>
+</input>

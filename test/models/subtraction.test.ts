@@ -46,4 +46,28 @@ describe("Subtraction.apply", () => {
         const result: number[] = [3, 3, 6, 1];
         expect(new Subtraction().apply(minuend, subtrahend)).toEqual(result);
     });
+
+    test("99 - 44 = 55", () => {
+        const minuend: number[] = [2, 9, 9];
+        const subtrahend: number[] = [2, 4, 4];
+
+        const result: number[] = [2, 5, 5];
+        expect(new Subtraction().apply(minuend, subtrahend)).toEqual(result);
+    });
+
+    test("132471 - 53790 = 78681", () => {
+        const minuend: number[] = [6, 1, 7, 4, 2, 3, 1];
+        const subtrahend: number[] = [5, 0, 9, 7, 3, 5];
+
+        const result: number[] = [5, 1, 8, 6, 8, 7];
+        expect(new Subtraction().apply(minuend, subtrahend)).toEqual(result);
+    });
+
+    test("999999999 - 111111111 = 888888888", () => {
+        const minuend: number[] = [9, 9, 9, 9, 9, 9, 9, 9, 9, 9];
+        const subtrahend: number[] = [9, 1, 1, 1, 1, 1, 1, 1, 1, 1];
+
+        const result: number[] = [9, 8, 8, 8, 8, 8, 8, 8, 8, 8];
+        expect(new Subtraction().apply(minuend, subtrahend)).toEqual(result);
+    });
 });
