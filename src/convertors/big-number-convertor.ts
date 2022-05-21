@@ -28,7 +28,7 @@ export class BigNumberConvertor {
             return [1, 0];
         }
 
-        console.assert(!str, "String is falsy.");
+        console.assert(str, "String is falsy.");
 
         str = str.trim();
 
