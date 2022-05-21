@@ -1,3 +1,5 @@
+import { assertBigNumber } from "./assertions-utils";
+
 /**
  * Checks if a big number is equal to 0.
  *
@@ -6,6 +8,8 @@
  * @param bigNumber - the big number to be checked if it is equal to 0
  */
 export function checkIfBigNumberEqualsToZero(bigNumber: number[]): boolean {
+    assertBigNumber(bigNumber);
+
     return bigNumber[0] === 1 && bigNumber[1] === 0;
 }
 
@@ -31,18 +35,32 @@ export function compare(firstBigNumber: number[], secondBigNumber: number[]): nu
         --secondBigNumber[0];
     }
 
+    assertBigNumber(firstBigNumber);
+    assertBigNumber(secondBigNumber);
+
     if (firstBigNumber[0] !== secondBigNumber[0]) {
         return firstBigNumber[0] < secondBigNumber[0] ? -1 : 1;
     }
 
+    console.assert(firstBigNumber[0] === secondBigNumber[0],
+        "The big numbers don't have the same number of digits.");
+
     let i: number = firstBigNumber[0];
     while (firstBigNumber[i] === secondBigNumber[i] && i > 0) {
+        console.assert(firstBigNumber[i] === secondBigNumber[i], "The current digit is different.");
+        console.assert(i > 0, "i <= 0");
+
         --i;
+
+        console.assert(i >= 0, "i < 0");
     }
 
     if (i === 0) {
         return 0;
     }
+
+    console.assert(i !== 0, "i === 0");
+    console.assert(firstBigNumber[i] !== secondBigNumber[i], "The big numbers are equal.");
 
     return firstBigNumber[i] < secondBigNumber[i] ? -1 : 1;
 }
