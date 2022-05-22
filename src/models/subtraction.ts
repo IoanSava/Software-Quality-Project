@@ -1,7 +1,7 @@
 import { NegativeResultOfSubtractionError } from "../errors/negative-result-of-subtraction-error";
 import { BinaryOperator } from "./binary-operator";
 import { compare } from "../helpers/big-number";
-import { assertBigNumber } from "src/helpers/assertions-utils";
+import { assertBigNumber } from "../helpers/assertions-utils";
 
 export class Subtraction extends BinaryOperator {
     getSymbol(): string {

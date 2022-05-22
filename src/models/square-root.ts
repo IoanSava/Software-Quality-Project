@@ -3,7 +3,7 @@ import { Addition } from "./addition";
 import { Subtraction } from "./subtraction";
 import { Multiplication } from "./multiplication";
 import { checkIfBigNumberEqualsToZero, compare } from "../helpers/big-number";
-import { assertBigNumber } from "src/helpers/assertions-utils";
+import { assertBigNumber } from "../helpers/assertions-utils";
 
 export class SquareRoot extends UnaryOperator {
     getSymbol(): string {
