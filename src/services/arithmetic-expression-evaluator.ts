@@ -9,8 +9,10 @@ import { Division } from "../models/division";
 import { Power } from "../models/power";
 import { SquareRoot } from "../models/square-root";
 import { ExpressionConvertor } from "../convertors/expression-convertor";
+import { assertBigNumber } from "../helpers/assertions-utils";
 
 const PARSING_ERROR_MESSAGE = "parsing error";
+const INVARIANT_PATTERN = /parsing error|(?:\d+ *[\*\+\-/(?:\*\*)] *\d+|sqrt\(\d+\)) *= *(?:\d+)|error */g
 
 export class ArithmeticExpressionEvaluator {
     constructor(
@@ -39,6 +41,8 @@ export class ArithmeticExpressionEvaluator {
             return [PARSING_ERROR_MESSAGE];
         }
 
+        console.assert(!!root, "The root is null");
+
         let parents = calculateParentMap(root);
         let result: string[] = [];
 
@@ -55,15 +59,32 @@ export class ArithmeticExpressionEvaluator {
                 return result;
             }
         }
-
+        console.assert(result.length > 0, "A non-null expression node should yield more than 0 operations");
+        result
+            .forEach(
+                res => console.assert(
+                    INVARIANT_PATTERN.test(res),
+                    "The result does not match the expected pattern"
+                )
+            );
+        result.slice(0, -1)
+            .forEach(
+                res => console.assert(
+                    !res.includes("error"),
+                    "The evaluation cannot continue after encountering an error"
+                )
+            );
         return result;
     }
 
     private evalOne(node: ExpressionTreeNode, variables: Map<string, string>): ExpressionTreeNode {
+        console.assert(!!variables, "The variable map is null");
+        console.assert(!!node, "The given node is null");
         ArithmeticExpressionEvaluator.ensureExpression(node);
         const params: number[][] = this.extractParams(node, variables);
         let result: number[];
 
+        console.assert(isExpression(node), "The evaluated node should be an expression");
         switch (node.operation) {
             case "ADDITION":
                 result = new Addition().apply(params[0], params[1]);
@@ -86,7 +107,7 @@ export class ArithmeticExpressionEvaluator {
             default:
                 throw new IllegalStateError();
         }
-
+        assertBigNumber(result);
         return {constant: this.bigNumberConvertor.convertBigNumberToString(result)}
     }
 
