@@ -40,7 +40,6 @@ export function* postorder(root: ExpressionTreeNode): Generator<ExpressionTreeNo
             if (!!currentNode.right)
                 rightChildStack.push(currentNode.right);
             mainStack.push(currentNode);
-            console.assert(!!currentNode.left, "Invalid state: the node should have a left neighbour.");
             currentNode = currentNode.left;
         } else {
             currentNode = mainStack[mainStack.length - 1];
@@ -67,13 +66,11 @@ export function* inorder(root: ExpressionTreeNode): Generator<ExpressionTreeNode
     let currentNode: ExpressionTreeNode = root;
     while (stack.length > 0 || !!currentNode) {
         if (!!currentNode) {
-            console.assert(!!currentNode.left, "Invalid state: the node should have a left neighbour.");
             stack.push(currentNode);
             currentNode = currentNode.left;
         } else {
             currentNode = stack.pop();
             if (isExpression(currentNode)) yield currentNode;
-            console.assert(!!currentNode.right, "Invalid state: the node should have a right neighbour.");
             currentNode = currentNode.right;
         }
     }
