@@ -9,14 +9,6 @@ describe("Subtraction.apply", () => {
         expect(() => new Subtraction().apply(minuend, subtrahend)).toThrow(new NegativeResultOfSubtractionError(minuend, subtrahend));
     });
 
-    test("Bigger sizes than the actual numbers, but subtraction is performed correctly", () => {
-        const minuend: number[] = [5, 0, 2, 3, 0, 0];
-        const subtrahend: number[] = [7, 5, 1, 3, 0, 0, 0, 0];
-
-        const result: number[] = [1, 5];
-        expect(new Subtraction().apply(minuend, subtrahend)).toEqual(result);
-    })
-
     test("Subtracting 0 from a number has no effect on that number", () => {
         const minuend: number[] = [3, 0, 2, 1];
         const zeroNumber: number[] = [1, 0];
