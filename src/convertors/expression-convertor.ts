@@ -11,7 +11,10 @@ const operationMap: Map<string, string> = new Map<string, string>(Object.entries
     "POW": "**"
 }));
 
-const operationSymbol = (name: string): string => operationMap.get(name);
+const operationSymbol = (name: string): string => {
+    console.assert(operationMap.has(name), "The given operation does not exist");
+    return operationMap.get(name);
+}
 
 export class ExpressionConvertor {
     /**
@@ -54,6 +57,7 @@ export class ExpressionConvertor {
      * @return content - the arithmetic expression string.
      */
     public nodeToString(root: ExpressionTreeNode): string {
+        console.assert(!!root, "The root should not be null");
         let traversal: string[] = [];
         for (let node of inorder(root))
             traversal.push(this.atomicNodeToString(node));
@@ -73,6 +77,7 @@ export class ExpressionConvertor {
      * @return content - the arithmetic expression string.
      */
     public atomicNodeToString(root: ExpressionTreeNode): string {
+        console.assert(!!root, "The root should not be null");
         if (root.operation === "SQRT") return `sqrt(${root.left.constant || root.left.variable})`;
         if (!isExpression(root)) return (root.constant || root.variable).toString();
         return [
